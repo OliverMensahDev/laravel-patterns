@@ -22,3 +22,6 @@ Route::get("employees/all", "EmployeeController@allEmployees");
 Route::get("employees/taxes", "TaxController@getTaxes");
 Route::post("contractors/save", "SubcontractorController@save");
 Route::get("contractors/all", "SubcontractorController@all");
+Route::post("employees/request-time-off", 'NatHolidayEmployeeTimeOffController@requestTimeOff');
+Route::get("employees/request-payslip", 'ExportPayslipController@requestPayslip');
+Route::post("employees/send-payment", 'PaymentProcessorController@sendPayments');

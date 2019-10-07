@@ -17,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Services\IEmployeeRepository',
             'App\Services\EmployeeRepository'
         );
+
+        $this->app->bind(
+            'App\Domains\Notification\EmployeeNotifier',
+            'App\Domains\Notification\EmailSender'
+        );
     }
 
     /**

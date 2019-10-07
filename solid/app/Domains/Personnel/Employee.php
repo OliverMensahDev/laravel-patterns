@@ -61,4 +61,7 @@ abstract class Employee
   {
       return $this->firstName . " " . $this->lastName;
   }
+
+  public  abstract function requestTimeOff(int $nbDays, Employee $manager);
+
 }

@@ -9,4 +9,11 @@ class PartTimeEmployee extends Employee
       parent::__construct($fullName, $monthlyIncome);
       $this->setNbHoursPerWeek(20);
   }
+  
+  public function requestTimeOff(int $nbDays, Employee $manager) {
+    return("Time off request for full time employee " .
+    $this->getFullName() .
+    "; Nb days " . $nbDays .
+    "; Requested from ". $manager->getFullName());
+  }
 }
