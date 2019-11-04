@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    public $iEmployeeRepository; 
+    public $iEmployeeRepository;
 
     public function __construct(IEmployeeRepository $iEmployeeRepository)
     {
@@ -17,13 +17,19 @@ class EmployeeController extends Controller
 
     public function saveEmployee(Request $request)
     {
-        try{
-            $employee = EmployeeFactory::create($request);
+        try {
+            $data = (object) [
+                "fullName" => $request->fullName,
+                "monthlyIncome" => $request->monthlyIncome,
+                "email"   => $request->email,
+                "nbHoursPerWeek" => $request->nbHoursPerWeek,
+                "type" => $request->type
+            ];
+            $employee = EmployeeFactory::create($data);
             $this->iEmployeeRepository->save($employee);
-        }catch(\Exception $ex){
+        } catch (\Exception $ex) {
             return $ex->getMessage();
         }
-
     }
 
     public function allEmployees()

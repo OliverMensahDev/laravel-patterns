@@ -3,6 +3,7 @@ namespace App\Domains\Payment;
 
 use App\Domains\Notification\EmployeeNotifier;
 use App\Domains\Personnel\FullTimeEmployee;
+use App\Services\EmployeeFactory;
 use App\Services\IEmployeeRepository;
 
 class PaymentProcessor {
@@ -20,7 +21,8 @@ class PaymentProcessor {
         $employees = $this->employeeRepository->findAll();
         $totalPayments = 0;
         foreach($employees as $employee){
-          $newEmployee = new FullTimeEmployee($employee->fullName, $employee->monthlyIncome);
+          $data = (object) $employee;
+          $newEmployee = EmployeeFactory::create($data);
           $totalPayments += $newEmployee->getMonthlyIncome();
           $this->employeeNotifier->notify($newEmployee);
         }

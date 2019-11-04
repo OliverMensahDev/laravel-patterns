@@ -2,6 +2,8 @@
 
 namespace App\Domains\Personnel;
 
+use App\Models\EmployeeType;
+
 class Intern extends Employee 
 {
   public function __construct(string $fullName, int $monthlyIncome, int $nbHours) 
@@ -14,5 +16,10 @@ class Intern extends Employee
     $this->getFullName() .
     "; Nb days " . $nbDays .
     "; Requested from ". $manager->getFullName());
+  }
+
+  public function type()
+  {
+    return EmployeeType::Intern;
   }
 }

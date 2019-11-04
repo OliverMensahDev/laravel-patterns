@@ -9,6 +9,13 @@ class EmployeeModel extends Model
     'email',
     'fullName',
     'monthlyIncome',
-    'nbHoursPerWeek'
+    'nbHoursPerWeek',
+    "type"
   ];
+
+  public function setFirstNameAttribute($value)
+  {
+      $this->attributes['type'] = strtolower($value);
+  }
 }
+

@@ -63,5 +63,6 @@ abstract class Employee
   }
 
   public  abstract function requestTimeOff(int $nbDays, Employee $manager);
+  public  abstract function type();
 
 }

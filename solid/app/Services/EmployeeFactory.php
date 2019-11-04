@@ -5,22 +5,23 @@ namespace App\Services;
 use App\Domains\Personnel\FullTimeEmployee;
 use App\Domains\Personnel\Intern;
 use App\Domains\Personnel\PartTimeEmployee;
-use Illuminate\Http\Request;
+use App\Models\EmployeeType;
 
 class EmployeeFactory
 {
-  public static function create(Request $request)
+  public static function create(object $request)
   {
-    if($request->employeeType == "Intern"){
+    $employeeType = strtolower($request->type);
+    if( $employeeType == EmployeeType::Intern){
       return new Intern($request->fullName, $request->monthlyIncome, $request->nbHoursPerWeek);
     }
-    if($request->employeeType == "FullTime"){
+    if( $employeeType == EmployeeType::FullTime){
       return new FullTimeEmployee($request->fullName, $request->monthlyIncome);
     }
-    if($request->employeeType == "PartTime"){
+    if( $employeeType == EmployeeType::PartTime){
       return new PartTimeEmployee($request->fullName, $request->monthlyIncome);
     }
-    return new \Exception("Invalid Employee Type");
+    throw new \Exception("Invalid Employee Type");
   } 
 }
 

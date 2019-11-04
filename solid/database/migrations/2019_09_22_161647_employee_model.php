@@ -19,6 +19,7 @@ class EmployeeModel extends Migration
             $table->string('fullName');
             $table->integer('monthlyIncome');
             $table->integer('nbHoursPerWeek');
+            $table->string('type');
             $table->timestamps();
         });
     }

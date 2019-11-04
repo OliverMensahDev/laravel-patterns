@@ -14,6 +14,7 @@ class EmployeeRepository implements IEmployeeRepository
     $model->monthlyIncome  = $employee->getMonthlyIncome();
     $model->email = $employee->getEMail();
     $model->nbHoursPerWeek = $employee->getNbHoursPerWeek();
+    $model->type = $employee->type();
     $model->save();
   } 
 
